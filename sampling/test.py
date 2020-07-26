@@ -55,6 +55,7 @@ class Wave(Wave_Header):
 
     def __init__(self, file, mode):
         super().__init__(file, mode)
+        Wave.SIZE_SHORT = self.bits_per_sample // 8
         self.file_name = file
         self.data = self.file.read()                        # 데이터
         self.n_sample = self.file.tell() // Wave.SIZE_SHORT # 샘플링
@@ -86,7 +87,7 @@ fin = Wave('IU', 'rb')
 fin.show_info()
 print()
 # fin.show_data()
-fin.make_exel()
+# fin.make_exel()
 fin.close()
 
 # fout.close()
